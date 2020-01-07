@@ -30,5 +30,3 @@ public extension TimeInterval {
         
     }
 }
-
-TimeInterval().stringFromTimeInterval()
