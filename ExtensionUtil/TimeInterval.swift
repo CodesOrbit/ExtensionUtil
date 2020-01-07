@@ -13,7 +13,7 @@ public extension TimeInterval {
     /**
      Get formatted time interval in format of HH:MM:SS
      
-     - Returns: **TimeInterval** formated in format of HH:mm:ss of type **String** | **TimeInterval** formated in format of mm:ss (if time interval is less than a hour) of type **String**
+     - Returns: **TimeInterval** formatted in format of HH:mm:ss of type **String** | **TimeInterval** formatted in format of mm:ss (if time interval is less than a hour) of type **String**
      */
     
     func stringFromTimeInterval() -> String {
