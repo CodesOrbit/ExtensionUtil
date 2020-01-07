@@ -11,9 +11,9 @@ import Foundation
 public extension TimeInterval {
     
     /**
-     Get formated time interval in format of HH:MM:SS
+     Get formatted time interval in format of HH:MM:SS
      
-     - Returns: **TimeInterval** formated in format of HH:MM:SS of type **String** | **TimeInterval** formated in format of MM:SS (if time interval is less than a hour) of type **String**
+     - Returns: **TimeInterval** formated in format of HH:mm:ss of type **String** | **TimeInterval** formated in format of mm:ss (if time interval is less than a hour) of type **String**
      */
     
     func stringFromTimeInterval() -> String {
@@ -27,6 +27,5 @@ public extension TimeInterval {
         } else {
             return String(format: "%0.2d:%0.2d",minutes,seconds)
         }
-        
     }
 }
