@@ -10,6 +10,10 @@ import UIKit
 
 public extension UILabel {
     
+    /**
+    Maximum no of lines required for the text assigned to **UILabel** to make it fully visible to user
+    */
+    
     var maxNumberOfLines: Int {
         let maxSize = CGSize(width: frame.size.width, height: CGFloat(MAXFLOAT))
         let text = (self.text ?? "") as NSString
@@ -18,18 +22,34 @@ public extension UILabel {
         return Int(ceil(textHeight / lineHeight))
     }
     
-    func addTrailing(with trailingText: String, moreText: String, moreTextFont: UIFont, moreTextColor: UIColor) {
-        let readMoreText: String = trailingText + moreText
+    /**
+     Add trailing text to **UILabel**
+     
+     - Parameters:
+         - ellipseText: Text to be used for replacing the ellipse (...) (*optional default is set to empty string*)
+         - trailingText: Text to be appended after **trailingText** (
+         - trailingTextFont: Font to be used for trailing text (*optional default is set to system font of size 17*)
+         - trailingTextColor: Color to be used for trailing text (*optional* default is set to black)
+     
+     One Use case for trailing text can be showing "see more" at the end of a UILabel
+    */
+    
+    func addTrailing(ellipseText: String = "", trailingText: String, trailingTextFont: UIFont = UIFont.systemFont(ofSize: 17), trailingTextColor: UIColor = UIColor.black) {
+        let readMoreText: String = ellipseText + trailingText
         let lengthForVisibleString: Int = self.visibleTextLength
         let mutableString: String = self.text!
         let trimmedString: String? = (mutableString as NSString).replacingCharacters(in: NSRange(location: lengthForVisibleString, length: ((self.text?.count)! - lengthForVisibleString)), with: "")
         let readMoreLength: Int = (readMoreText.count)
-        let trimmedForReadMore: String = (trimmedString! as NSString).replacingCharacters(in: NSRange(location: ((trimmedString?.count ?? 0) - readMoreLength), length: readMoreLength), with: "") + trailingText
+        let trimmedForReadMore: String = (trimmedString! as NSString).replacingCharacters(in: NSRange(location: ((trimmedString?.count ?? 0) - readMoreLength), length: readMoreLength), with: "") + ellipseText
         let answerAttributed = NSMutableAttributedString(string: trimmedForReadMore, attributes: [NSAttributedString.Key.font: self.font ?? UIFont.systemFont(ofSize: 17)])
-        let readMoreAttributed = NSMutableAttributedString(string: moreText, attributes: [NSAttributedString.Key.font: moreTextFont, NSAttributedString.Key.foregroundColor: moreTextColor])
+        let readMoreAttributed = NSMutableAttributedString(string: trailingText, attributes: [NSAttributedString.Key.font: trailingTextFont, NSAttributedString.Key.foregroundColor: trailingTextColor])
         answerAttributed.append(readMoreAttributed)
         self.attributedText = answerAttributed
     }
+    
+    /**
+     Lenght of text visible to user i.e. no of characters visible before the start of ellipses (...)
+     */
     
      var visibleTextLength: Int {
         let font: UIFont = self.font
