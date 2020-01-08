@@ -29,7 +29,7 @@ Content below provide details on functions available in each extension
 ##### Variable: `isCirculer` 
 ##### description: `IBDesignable Bool if set to true for certain view the view renders as a circular view` 
 ---
-##### Variable: cornerRadius
+##### Variable: `cornerRadius`
 ##### description: `IBInspectable CGFloat for setting corner radius of a view`
 ---
 ##### Variable: `borderWidth`
